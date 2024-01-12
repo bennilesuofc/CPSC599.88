@@ -1,0 +1,9 @@
+# Site settings
+title: Benjamin Niles
+author: Benjamin Niles
+description: "Projects for CPSC 599.88 Winter 2024"
+
+# Build settings
+remote_theme: pages-themes/slate@v0.2.0
+plugins:
+- jekyll-remote-theme
