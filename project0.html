@@ -1,0 +1,155 @@
+---
+layout: default
+title: Project 0
+---
+<head>
+<!image slideshow code from https://www.w3schools.com/howto/howto_js_slideshow.asp>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+.mySlides1, .mySlides2, .mySlides3, .mySlides4 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 300px;
+  max-height:400px;
+  position: relative;
+  margin: auto;
+  border:1px solid black;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+  
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+</style>
+</head>
+<body>
+<h2 style="text-align:center">RGB Colour Mixer</h2>
+
+<div style="display:flex;flex-direction:column;align-items:center;">
+<img src="" alt="main image" style="width:100%">
+
+<hr>
+  
+<h3>Project Description</h3>
+<p>
+This device allows you to create a colour by adjusting the red, green, and blue levels of an LED with a joystick. Pressing the joystick in creates a random colour.
+</p>
+<p>
+I had initially wanted to use the joystick to move around in a colour space, with the LED displaying the colour at the current coordinates in the colour space (pressing in the stick would still make a random colour by moving to a random coordinate). 
+  Part of this design’s appeal to me was the simplicity- just a single joystick and RGB LED. 
+  However, this would have required mapping the joystick’s coordinates to an xyY coordinate system, and then further mapping the result to the RGB values that the LED uses. 
+  As well, the LED’s data sheet did not seem to display its colour gamut, so some of the values for the calculations would have to have been guessed at.
+</p>
+<p>
+I decided to directly adjust each of the LED’s RGB values instead.
+  While I could have used buttons to easily increase or decrease the values, I thought that the analog potentiometers in the joystick would provide finer control to the user. 
+  The joystick only has two axes though, so instead of assigning a value to each axis, I made one axis switch between red, blue, and green, and the other axis adjust its value. 
+  I also added another RGB LED to the device to indicate to the user which value they are currently adjusting. 
+  It would also be possible to switch between adjusting red, blue, and green using a button (or two), but that would’ve required wiring in more components, and one of the axes of the joystick would have gone unused.
+  I also wanted to try to stay close to my original design’s simpler control scheme.
+</p>
+ </div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+<hr>
+  <h3>Demo Video</h3>
+  <video width="300" height="400" autoplay="muted" controls>
+    <source src="" type="video/mp4">
+  </video>
+</div>
+  
+<hr>
+  
+<h3>Concept Development:</h3>
+<div class="slideshow-container">
+  <div class="mySlides1">
+    <img src="" alt="image 1" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="" alt="image 2" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="" alt="image 3" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="" alt="image 4" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="" alt="image 5" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="" alt="image 6" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="" alt="image 7" style="width:100%">
+  </div>
+   
+  <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+</div>
+
+<hr>
+  
+<h3>Circuit Diagram</h3>
+<div style="display:flex;flex-direction:column;align-items:center;">
+<img src="" alt="circuit diagram" style="width:100%">
+</div>
+<a href="" target="_blank">Link to Source Code</a>
+  
+<hr>
+
+<h3>References</h3>
+  <ul>
+    <li><a href="https://www.elegoo.com/en-ca/blogs/arduino-projects/elegoo-uno-project-super-starter-kit-tutorial" target="_blank">Elegoo Arduino Lesson 4, Lesson 12</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/CIE_1931_color_space#CIE_xy_chromaticity_diagram_and_the_CIE_xyY_color_space" target="_blank">Wikipedia: CIE chromaticiy diagram</a></li>
+    <li><a href="https://gist.github.com/popcorn245/30afa0f98eea1c2fd34d" target="_blank">RGB to xyY and xyY to RGB conversion algorithms</a></li>
+  </ul>
+
+
+<script>
+let slideIndex = [1];
+let slideId = ["mySlides1"];
+showSlides(1, 0);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  let i;
+  let x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}    
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex[no]-1].style.display = "block";  
+}
+</script>
+
+</body>
