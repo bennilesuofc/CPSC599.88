@@ -1,0 +1,183 @@
+---
+layout: default
+title: Project 1
+---
+<head>
+<!image slideshow code from https://www.w3schools.com/howto/howto_js_slideshow.asp>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+.mySlides1, .mySlides2, .mySlides3, .mySlides4 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 300px;
+  max-height:400px;
+  position: relative;
+  margin: auto;
+  border:1px solid black;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+  
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+</style>
+</head>
+<body>
+<h2 style="text-align:center">Tubular Touch Synth Controller</h2>
+
+<div style="display:flex;flex-direction:column;align-items:center;">
+<img src="assets/project1/images/main_image.png" alt="main image" style="width:100%">
+
+<hr>
+  
+<h3>Project Description</h3>
+<p>
+This device creates sound by interpreting a user’s input via an Arduino and the SuperCollider software. 
+It is played using the five tubes on its front: pressing each tube will play a note, and pushing or pulling the tube will change the pitch of that note. 
+These interactions are detected by photoresistors and slide potentiometers respectively. 
+</p>
+<p>
+My intent with this project was to create a device that could be altered to play many different sounds on a few inputs, like retuning the open strings on a guitar. 
+This device is more like having an array of trombones, where changing the length of each trombone’s slide (aka each tube) changes the pitch.
+</p>
+<p>
+Different mappings for this device are very possible. There are five digital and analog inputs each, so the user could have a lot of control over the sound produced. 
+For example, the tubes could be used to control different modulation envelopes for a sound in addition to its pitch. 
+SuperCollider is a pretty complex software with a lot of potential for this sort of remapping, but I didn’t explore too deeply into it, mostly because I adopted the software pretty late into the project. 
+I was originally going to have the device be a MIDI controller, but apparently the Arduino UNO has some issues with USB communication vs Serial communication. 
+Also, MIDI didn’t really fit my idea for the user’s interactions with the device.
+</p>
+<p>
+  This project was also fraught with mechanical issues. I wanted to emulate the shortening and lengthening used by analog instruments to change the pitch of notes, and the simplest way to do this seemed to be by using slide potentiometers. 
+  Making my own seemed difficult; there would be issues with mounting, stability, and variations in electrical resistance. I decided it would be easier to buy some instead. As it turned out, this wasn’t really the case. 
+  The slide pots I bought online were not compatible with my breadboard- their pins were just slightly out of line with the breadboard’s pin holes. 
+  As well, all the pins were in-line, so even if I did bend them to fit into the breadboard, they would short out anyway. 
+  Rotating them horizontally could’ve worked, but I would only have been able to fit two slide pots at either end of the breadboard, instead of all five in a row like I wanted. 
+  I ended up bending the middle wiper pins on the pots so that they stuck out from underneath, and then cut up a paperclip to use as a connection between those and the breadboard. 
+  I then stuck pieces of cardboard in between the paperclip bits and the bodies of the slide pots to prevent shorts. It works, somehow.
+</p>
+<p>
+  Another issue I faced was the photoresistors on the ends of the tubes. I initially wanted to make capacitive touch sensors for the ends of the tubes, but this would’ve required more pins on the Arduino than were available. 
+  Like with the DIY slide pots, there were also potential issues with different electrical resistances. I decided to instead use photoresistors, as these only require one pin each on the Arduino. 
+  However, photoresistors are an analog input, not digital, and all the analog pins were being taken up by the slide pots. 
+  Luckily, I found a post online that explained how to set up a voltage divider circuit and the necessary code so that I could use the photoresistors as digital inputs.
+  Some other issues I encountered were: attaching photoresistors to the ends of the tubes, attaching the tubes to the slide pots, and wiring the circuitry so that there was enough room for the tubes to move back and forth.
+</p>
+<p>
+    From these experiences, and from using the device a few times, I came up with some possible changes for a future design:
+</p>
+  <ul>
+    <li>•	A tab or handle to make pushing and pulling on the tubes easier</li>
+    <li>•	Extra weight in the enclosure so that it won’t slide around when pushing on the tubes</li>
+    <li>•	Solder connections instead of using a breadboard- less likely to fall apart, can use irregular components, smaller size overall</li>
+    <li>•	Remove photoresistors from inside tubes- don’t have to worry about the movement of the tubes dislodging the photoresistors’ wiring</li>
+    <li>•	Longer slide pots- more stable tubes, greater precision in adjustments</li>
+  </ul>
+ </div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+<hr>
+  <h3>Demo Video</h3>
+  <iframe src="" width="640" height="480" allow="autoplay"></iframe>
+</div>
+  
+<hr>
+  
+<h3>Concept Development:</h3>
+<div class="slideshow-container">
+  <div class="mySlides1">
+    <img src="assets/project1/images/dev_image_1.png" alt="image 1" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project1/images/dev_image_2.png" alt="image 2" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project1/images/dev_image_3.png" alt="image 3" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project1/images/dev_image_4.png" alt="image 4" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project1/images/dev_image_5.png" alt="image 5" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project1/images/dev_image_6.png" alt="image 6" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project1/images/dev_image_7.png" alt="image 7" style="width:100%">
+  </div>
+   
+  <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+</div>
+
+<hr>
+  
+<h3>Circuit Diagram</h3>
+<div style="display:flex;flex-direction:column;align-items:center;">
+<img src="assets/project1/images/Circuit Diagram.png" alt="circuit diagram" style="width:100%">
+</div>
+<a href="" target="_blank">Link to Arduino Code</a>
+<a href="" target="_blank">Link to SuperCollider Code</a>
+  
+<hr>
+
+<h3>References</h3>
+  <ul>
+    <li>[1] ACM. Citation Style and Reference Formats. Retrieved from <a href="https://www.acm.org/publications/authors/reference-formatting" target="_blank">https://www.acm.org/publications/authors/reference-formatting</a></li>
+    <li>[2] Arduino Stack Exchange. Use photocell as digital input. Retrieved from <a href="https://arduino.stackexchange.com/questions/29074/use-photocell-as-digital-input" target="_blank">https://arduino.stackexchange.com/questions/29074/use-photocell-as-digital-input</a></li>
+    <li>[3] Eli Fieldsteel. 2017. SuperCollider Tutorial: 19. Arduino. Video. (23 August 2017). Retrieved <a href="https://www.youtube.com/watch?v=_NpivsEva5o" target="_blank">https://www.youtube.com/watch?v=_NpivsEva5o</a></li>
+    <li>[4] Electronics for Art and Education. SuperCollider + Arduino. Retrieved from <a href="https://electronics.koncon.nl/supercollider/" target="_blank">https://electronics.koncon.nl/supercollider/</a></li>
+    <li>[5] SuperCollider. Retrieved from <a href="https://supercollider.github.io/" target="_blank">https://supercollider.github.io/</a></li>
+    <li>[6] SuperCollider. Getting Started with SC. Retrieved from <a href="https://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html" target="_blank">https://doc.sccode.org/Tutorials/Getting-Started/00-Getting-Started-With-SC.html</a></li>
+
+  </ul>
+
+
+<script>
+let slideIndex = [1];
+let slideId = ["mySlides1"];
+showSlides(1, 0);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  let i;
+  let x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}    
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex[no]-1].style.display = "block";  
+}
+</script>
+
+</body>
