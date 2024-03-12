@@ -1,5 +1,6 @@
-//www.elegoo.com
-//2016.12.08
+//CPSC 599.88 Project 2
+//Mar 12, 2024
+//Benjamin Niles
 #include <Servo.h>
 
 Servo servo;  // create servo object to control a servo
