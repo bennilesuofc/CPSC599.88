@@ -1,0 +1,173 @@
+---
+layout: default
+title: Project 2
+---
+<head>
+<!image slideshow code from https://www.w3schools.com/howto/howto_js_slideshow.asp>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+.mySlides1, .mySlides2, .mySlides3, .mySlides4 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 300px;
+  max-height:400px;
+  position: relative;
+  margin: auto;
+  border:1px solid black;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+  
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+</style>
+</head>
+<body>
+<h2 style="text-align:center">Phys-Viz Auto-Harmonica</h2>
+
+<div style="display:flex;flex-direction:column;align-items:center;">
+<img src="assets/project1/images/main_image.png" alt="main image" style="width:100%">
+
+<hr>
+  
+<h3>Project Description</h3>
+<p>
+  The Phys-Viz Auto-Harmonica physically visualizes data by playing it though a harmonica. 
+  In its current implementation, the auto-harmonica maps ranges of temperature values to different notes on the harmonica. 
+  Lower pitches indicate colder weather, and higher notes indicate warmer weather. 
+  Each note played is one day in a year.
+</p>
+<p>
+  The auto-harmonica changes the pitch it is playing via a sliding crank mechanism attached to a servo motor. 
+  When the servo rotates to a specific position, the sliding crank moves back or forth, aligning an air tube with one of the openings in the harmonica. 
+  The air tube is supposed to use a fan to propel air into the harmonica, but this is where I ran into some issues.
+</p>
+<p>
+  I needed a fast and narrow stream of air, but none of the fans I tried were well-suited for this. 
+  I tried using the motor-and-fan combo included with my Arduino kit (the airflow was too wide), a small electronics cooling fan (the airflow was too shallow), and an aquarium air pump (the airflow was too weak, and the pump was very noisy). 
+  So, while the note-changing mechanism works fine, the final device is not actually capable of creating sound on its own. 
+  This version of the device needs to be helped along with either a compressed air canister or one’s own breath.
+</p>
+<p>
+  The data (daily climate reports from the Calgary International Airport for 2023) also had to be prepared for use by the auto-harmonica. 
+  The data was first quantized by value into eight ranges (as only eight of the ten openings on the harmonica are being used), and then placed into a text file, where each byte of data indicates a position on the harmonica. 
+  This text is then copied onto the Arduino, where it is procedurally read byte by byte, and moves the servo to the indicated position, playing the correct note. 
+  This is a direct mapping of numerical ranges, but another mapping could be the relative to value of each data point against the immediately previous value or some baseline or average value. 
+  Rate of change of values could also be represented by increasing or decreasing the tempo of the notes.
+</p>
+<p>
+  Future versions of this device would hopefully solve the airflow issue, and also explore different mappings as described above. 
+  As well, the unintended extra interactivity of having to blow into the air tube made me think that it might be interesting to look into data-representation devices that are human-powered on-purpose. 
+  These might also have a more evident data-mapping. 
+  For example, a hand-crank that displays calories burned over time.
+</p>
+ </div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+<hr>
+  <h3>Demo Video</h3>
+  <iframe src="" width="640" height="480" allow="autoplay"></iframe>
+</div>
+  
+<hr>
+  
+<h3>Concept Development:</h3>
+<div class="slideshow-container">
+  <div class="mySlides1">
+    <img src="assets/project2/images/dev_image_1.png" alt="image 1" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project2/images/dev_image_2.png" alt="image 2" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project2/images/dev_image_3.png" alt="image 3" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project2/images/dev_image_4.png" alt="image 4" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project2/images/dev_image_5.png" alt="image 5" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project2/images/dev_image_6.png" alt="image 6" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project2/images/dev_image_7.png" alt="image 7" style="width:100%">
+  </div>
+  <div class="mySlides1">
+    <img src="assets/project2/images/dev_image_8.png" alt="image 8" style="width:100%">
+  </div>
+  <div class="mySlides1">
+    <img src="assets/project2/images/dev_image_9.png" alt="image 9" style="width:100%">
+  </div>
+  <div class="mySlides1">
+    <img src="assets/project2/images/dev_image_10.png" alt="image 10" style="width:100%">
+  </div>
+   
+  <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+</div>
+
+<hr>
+  
+<h3>Circuit Diagram</h3>
+<div style="display:flex;flex-direction:column;align-items:center;">
+<img src="assets/project2/images/Circuit Diagram.png" alt="circuit diagram" style="width:100%">
+</div>
+<a href="" target="_blank">Link to Arduino Code</a>
+  
+<hr>
+
+<h3>References</h3>
+  <ul>
+    <li>[1] ~~. Retrieved 12 Mar, 2024 from <a href="" target="_blank">~~</a></li>
+  </ul>
+
+
+<script>
+let slideIndex = [1];
+let slideId = ["mySlides1"];
+showSlides(1, 0);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  let i;
+  let x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}    
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex[no]-1].style.display = "block";  
+}
+</script>
+
+</body>
