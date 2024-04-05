@@ -1,0 +1,181 @@
+---
+layout: default
+title: Project 3
+---
+<head>
+<!image slideshow code from https://www.w3schools.com/howto/howto_js_slideshow.asp>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+.mySlides1, .mySlides2, .mySlides3, .mySlides4 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 300px;
+  max-height:400px;
+  position: relative;
+  margin: auto;
+  border:1px solid black;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+  
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+</style>
+</head>
+<body>
+<h2 style="text-align:center">Tubular Touch Synth Controller v2</h2>
+
+<div style="display:flex;flex-direction:column;align-items:center;">
+<img src="assets/project3/images/main_image.png" alt="main image" style="width:100%">
+
+<hr>
+  
+<h3>Project Description</h3>
+  <p>
+    This is the second iteration of the Tubular Touch Synth Controller (there is a link to v1 below). 
+    It creates sound by interpreting a user’s input via an Arduino and the SuperCollider software. 
+    The user controls the device using five tubes on its top. Instead of using light sensors like in v1, version two uses capacitive touch sensors. 
+    All the player has to do is touch any of the nails on the tubes (not the pointy ends) and a note will play. 
+    Raising and lowering the tubes will respectively raise and lower the pitch of each tube’s note.
+  </p>
+  <p>
+    The most noticeable change from v1 is that the tubes are now vertical instead of horizontal.
+    This is so that the device won’t slide around when manipulating the tubes. For this purpose, I also made the enclosure heavier by adding weight towards the front and left. 
+    This also offsets any lifting force applied from raising the tubes. Compared to v1, v2 uses better quality parts, which made for an easier construction (no cut-up paperclips holding the circuitry together this time). 
+    I used longer slide potentiometers, shorter and more flexible wires that took up less space, and I reassembled the main breadboard to make wiring the slide potentiometers easier.
+  </p>
+  <p>
+    I had originally intended to use light sensors as with v1, but there were two problems to solve from that iteration. 
+    First, the light sensors would easily detach from the movement of the tubes. My proposed solution was to separate them into another input platform. 
+    Second, differences in ambient light levels meant that sometimes the sensors wouldn’t detect a user’s input. 
+    My solution for that was to add a way to adjust the sensitivity of the light sensors, either manually or by measuring and comparing to the room’s ambient light. 
+    I went ahead and created the circuitry needed to do this, but it turned out to be very complicated- rearranging the breadboard components to suit the slide potentiometers meant that I had to use lots and lots of wires to make the circuits for the light sensors. 
+    I was also having difficulty trying to stabilize the secondary input platform where all the light sensors were- they kept falling out anyway. 
+    I had already decided that I was going to use brass nails to move the tubes up and down (they’re a signature construction material for me at this point), so I decided to see how difficult it would be to try using them as a capacitive touch input too. 
+    It turned out that both the wiring and the code was a lot simpler, and like with the first iteration of the device, I could have just one point of interaction instead of two.
+  </p>
+  <p>
+    Besides the physical construction of the device, not many changes were made to version two’s code. 
+    I adjusted the Arduino code to work with capacitive touch sensors instead of light sensors, making use of a capacitance sensing library. 
+    In SuperCollider, I just changed the start and end points of the two-octave range of notes that the input maps to, from a slightly sharp G above middle C to the A below middle C.
+  </p>
+<p>
+  Here are some ideas I had for improving the design further:
+  <ul>
+    <li>For the capacitive sensors/movement guides, use metal tabs or foil-covered levers, or really anything less pointy than nails</li>
+    <li>Add some way to indicate notes for the different tube positions to make tuning easier- e.g. level lines on tubes, colour gradient, lights</li>
+    <li>Quantize ranges to play discrete notes</li>
+    <li>Increase the sensitivity of the touch capacitive sensors- I had noticed some sensing issues when I had the Arduino plugged into my computer and my computer plugged into a wall charger- apparently, I can easily increase the sensitivity by adding more resistors into the circuit, but hopefully not so much that pressing a sensor also induces a signal in the adjacent sensors</li>
+  </ul>
+</p>
+ </div>
+<div style="display:flex;flex-direction:column;align-items:center;">
+<hr>
+  <h3>Demo Video</h3>
+  <iframe src="https://drive.google.com/file/d/1gU5xMHwrBWiOYAXEJD2oNGIU5aU9YWKx/preview" width="640" height="480" allow="autoplay"></iframe>
+</div>
+  
+<hr>
+  
+<h3>Concept Development:</h3>
+<div class="slideshow-container">
+  <div class="mySlides1">
+    <img src="assets/project3/images/dev_image_1.png" alt="image 1" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project3/images/dev_image_2.png" alt="image 2" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project3/images/dev_image_3.png" alt="image 3" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project3/images/dev_image_4.png" alt="image 4" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project3/images/dev_image_5.png" alt="image 5" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project3/images/dev_image_6.png" alt="image 6" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project3/images/dev_image_7.png" alt="image 7" style="width:100%">
+  </div>
+  <div class="mySlides1">
+    <img src="assets/project3/images/dev_image_8.png" alt="image 8" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project3/images/dev_image_9.png" alt="image 9" style="width:100%">
+  </div>
+   <div class="mySlides1">
+    <img src="assets/project3/images/dev_image_10.png" alt="image 10" style="width:100%">
+  </div>
+  <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+</div>
+
+<hr>
+  
+<h3>Circuit Diagram</h3>
+<div style="display:flex;flex-direction:column;align-items:center;">
+<img src="assets/project3/images/Circuit Diagram.png" alt="circuit diagram" style="width:100%">
+</div>
+<a href="https://github.com/bennilesuofc/CPSC599.88/blob/main/assets/project3/TubularTouchV2.ino" target="_blank">Link to Arduino Code</a>
+<a href="https://github.com/bennilesuofc/CPSC599.88/blob/main/assets/project3/Tubular Touch v2 SuperCollider.ino" target="_blank">Link to SuperCollider Code</a>
+<hr>
+
+<h3>References</h3>
+  <ul>
+    <li>[1] Elegoo Arduino Lesson 9: Servo. Retrieved 12 Mar, 2024 from <a href="https://www.elegoo.com/en-ca/blogs/arduino-projects/elegoo-uno-project-super-starter-kit-tutorial" target="_blank">https://www.elegoo.com/en-ca/blogs/arduino-projects/elegoo-uno-project-super-starter-kit-tutorial</a></li>
+    <li>[2] Daily Data Report for January 2023 - Climate - Environment and Climate Change Canada. Retrieved 12 Mar, 2024 from <a href="https://climate.weather.gc.ca/climate_data/daily_data_e.html?hlyRange=2012-07-09%7C2024-03-06&dlyRange=2012-07-12%7C2024-03-06&mlyRange=%7C&StationID=50430&Prov=AB&urlExtension=_e.html&searchType=stnProv&optLimit=yearRange&StartYear=1840&EndYear=2024&selRowPerPage=25&Line=209&lstProvince=AB&timeframe=2&Day=6&Year=2023&Month=1#" target="_blank">https://climate.weather.gc.ca/climate_data/daily_data_e.html</a></li>
+    <li>[3] String - Arduino Reference. Retrieved 12 Mar, 2024 from <a href="https://www.arduino.cc/reference/en/language/variables/data-types/stringobject/" target="_blank">https://www.arduino.cc/reference/en/language/variables/data-types/stringobject/</a></li>
+  </ul>
+
+
+<script>
+let slideIndex = [1];
+let slideId = ["mySlides1"];
+showSlides(1, 0);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  let i;
+  let x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}    
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex[no]-1].style.display = "block";  
+}
+</script>
+
+</body>
